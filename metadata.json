@@ -1,0 +1,6 @@
+{
+  "name": "HUFFAZ ETAWAH",
+  "description": "HUFFAZ ETAWAH - Deen & Bayanaat Islamic media and education platform featuring Bayanaat, Namaz prayer times, Qibla finder, Islamic quizzes, Deeni Taleem, and Kids learning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

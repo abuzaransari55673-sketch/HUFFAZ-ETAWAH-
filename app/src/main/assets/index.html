@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HUFFAZ ETAWAH - Deen &amp; Bayanaat</title>
+  <meta name="description" content="Islamic Media &amp; Education Platform - Bayanaat, Jumma Khutba, Namaz Times, Qibla, Deeni Quizzes, and Kids Learning.">
+  <meta name="theme-color" content="#064E3B">
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HUFFAZ ETAWAH">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans + Amiri (Arabic) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+  <!-- Core App Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- 2-Second Professional Islamic Splash Screen -->
+  <div id="splashScreen" class="splash-overlay">
+    <div class="splash-logo-wrap">
+      <img id="splashLogoImg" src="" alt="Logo" style="display:none; width:100%; height:100%; object-fit:cover;">
+      <svg id="splashDefaultSvg" viewBox="0 0 512 512">
+        <path d="M 256 120 C 230 150, 190 190, 190 260 L 322 260 C 322 190, 282 150, 256 120 Z" />
+        <circle cx="256" cy="85" r="15" />
+      </svg>
+    </div>
+    <div class="splash-app-name" id="splashAppName">HUFFAZ ETAWAH</div>
+    <div class="splash-subtitle" id="splashSubtitle">Deen &amp; Bayanaat</div>
+    <div class="splash-tagline" id="splashTagline">Ilm • Ibadat • Tarbiyah</div>
+    <div class="splash-loader-bar">
+      <div class="splash-loader-fill"></div>
+    </div>
+  </div>
+
+  <!-- Offline Status Banner -->
+  <div id="offlineBanner" class="offline-banner">
+    <span class="material-symbols-rounded" style="font-size:18px;">cloud_off</span>
+    <span>Offline Mode - Local Islamic Content dastyab hai</span>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Top App Header -->
+    <header class="app-header">
+      <div class="header-top-row">
+        <div class="brand-wrapper">
+          <!-- Dedicated Logo Placeholder Area (Real PNG or SVG fallback) -->
+          <div class="logo-placeholder" id="logoContainer" title="HUFFAZ ETAWAH Official Logo">
+            <svg viewBox="0 0 512 512">
+              <path d="M 256 120 C 230 150, 190 190, 190 260 L 322 260 C 322 190, 282 150, 256 120 Z" />
+              <circle cx="256" cy="85" r="15" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">HUFFAZ ETAWAH</span>
+            <span class="brand-subtitle">Deen &amp; Bayanaat</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="btnNotifications" aria-label="Notifications" title="Notifications">
+            <span class="material-symbols-rounded">notifications</span>
+            <span class="badge-dot"></span>
+          </button>
+          <button class="icon-btn" id="btnThemeToggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
+            <span class="material-symbols-rounded" id="themeIcon">dark_mode</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Greeting Sub-bar inside Header -->
+      <div class="greeting-bar">
+        <div class="greeting-text">Assalamu Alaikum 👋</div>
+        <div class="greeting-subtext">Aaj ka din Mubarak ho!</div>
+      </div>
+    </header>
+
+    <!-- MAIN APP SCREENS -->
+
+    <!-- 1. HOME SCREEN -->
+    <main id="screen-home" class="screen-view active">
+      
+      <!-- Islamic Date & Live Prayer Hero Card -->
+      <section class="islamic-hero-card">
+        <div class="hero-dates-row">
+          <div>
+            <div class="hijri-badge" id="heroHijriDate">
+              <span class="material-symbols-rounded" style="font-size:16px;">calendar_month</span>
+              <span>19 Safar 1448 AH</span>
+            </div>
+            <div class="gregorian-date" id="heroGregorianDate">Tuesday, 01 September 2026</div>
+          </div>
+          <button class="location-chip" id="btnChangeLocation" title="Change City">
+            <span class="material-symbols-rounded" style="font-size:14px;">location_on</span>
+            <span id="heroCityName">Etawah</span>
+          </button>
+        </div>
+
+        <!-- Next Prayer Highlight -->
+        <div class="hero-prayer-highlight">
+          <div class="prayer-label-group">
+            <span class="next-prayer-tag">Agli Namaz</span>
+            <span class="next-prayer-name" id="heroNextPrayerName">Asr</span>
+          </div>
+          <div class="prayer-countdown-group">
+            <div class="prayer-time-val" id="heroNextPrayerTime">04:45 PM</div>
+            <div class="prayer-time-remaining" id="heroPrayerRemaining">Baaqi: 1 ghanta 12 min</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Access Features Grid -->
+      <section class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">grid_view</span>
+          Quick Features
+        </h2>
+      </section>
+      <div class="quick-grid">
+        <div class="quick-card" onclick="openWisdomModal('ayat')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">menu_book</span>
+          </div>
+          <span class="quick-title">Aaj ki Ayat</span>
+        </div>
+        <div class="quick-card" onclick="openWisdomModal('hadith')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">format_quote</span>
+          </div>
+          <span class="quick-title">Aaj ki Hadith</span>
+        </div>
+        <div class="quick-card" onclick="openWisdomModal('dua')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">favorite</span>
+          </div>
+          <span class="quick-title">Aaj ki Dua</span>
+        </div>
+        <div class="quick-card" onclick="openModal('modalNamaz')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">schedule</span>
+          </div>
+          <span class="quick-title">Namaz Times</span>
+        </div>
+        <div class="quick-card" onclick="openModal('modalQibla')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">explore</span>
+          </div>
+          <span class="quick-title">Qibla Finder</span>
+        </div>
+        <div class="quick-card" onclick="openModal('modalCalendar')">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">event</span>
+          </div>
+          <span class="quick-title">Calendar</span>
+        </div>
+        <div class="quick-card" onclick="openPhotoGallery()">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">collections</span>
+          </div>
+          <span class="quick-title">Photo Gallery</span>
+        </div>
+        <div class="quick-card" onclick="openKidsModule()">
+          <div class="quick-icon-wrap">
+            <span class="material-symbols-rounded">child_care</span>
+          </div>
+          <span class="quick-title">Kids Taleem</span>
+        </div>
+      </div>
+
+      <!-- Daily Wisdom Preview Card (Interactive tab switcher) -->
+      <div class="daily-wisdom-card mt-4" id="dailyWisdomWidget">
+        <div class="wisdom-tag">
+          <span class="material-symbols-rounded" style="font-size:14px;">auto_awesome</span>
+          <span id="wisdomTypeLabel">AAJ KI AYAT</span>
+        </div>
+        <div class="wisdom-arabic" id="wisdomArabicText">إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+        <div class="wisdom-transliteration" id="wisdomTransliteration">Inna ma'al 'usri yusra</div>
+        <div class="wisdom-translation" id="wisdomTranslationText">"Beshak mushkil ke saath aasaani hai."</div>
+        <div class="wisdom-footer">
+          <span class="wisdom-reference" id="wisdomRefText">Surah Ash-Sharh (94:6)</span>
+          <div class="wisdom-actions">
+            <button class="btn-gold" style="padding:4px 12px; font-size:0.75rem;" onclick="shareContent('wisdom')">
+              <span class="material-symbols-rounded" style="font-size:16px;">share</span> Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Bayanaat Section -->
+      <section class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">play_circle</span>
+          Taaza Bayanaat
+        </h2>
+        <a class="section-link" onclick="switchNav('bayanaat')">Sab Dekhein &rarr;</a>
+      </section>
+      <div class="bayan-grid" id="homeLatestBayanaat">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Kids Learning Interactive Banner -->
+      <div class="kids-banner-card" onclick="openKidsModule()">
+        <span class="kids-pill">HUFFAZ ETAWAH Kids</span>
+        <h3 class="kids-title">Islamic Kids Learning</h3>
+        <p class="kids-subtitle">Bachon ke liye aasan Quran, Sunnah aur dilchasp Islami Kahaniyan.</p>
+        <div class="kids-tags">
+          <span>• Quran</span>
+          <span>• Sunnah</span>
+          <span>• Duas</span>
+          <span>• Islamic Stories</span>
+        </div>
+        <div class="text-right">
+          <button class="btn-gold" style="font-size:0.8rem;">Learn • Love • Practice &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Official Media Section -->
+      <section class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">hub</span>
+          HUFFAZ ETAWAH Media
+        </h2>
+      </section>
+      <div class="media-channels-row">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="media-channel-card">
+          <span class="material-symbols-rounded media-icon-youtube">smart_display</span>
+          <span class="media-card-title">YouTube</span>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Subscribe</span>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="media-channel-card">
+          <span class="material-symbols-rounded media-icon-instagram">photo_camera</span>
+          <span class="media-card-title">Instagram</span>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Follow</span>
+        </a>
+        <a href="https://whatsapp.com/channel" target="_blank" rel="noopener noreferrer" class="media-channel-card">
+          <span class="material-symbols-rounded media-icon-whatsapp">chat</span>
+          <span class="media-card-title">WhatsApp</span>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Join Channel</span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- 2. BAYANAAT SCREEN (Video Library) -->
+    <main id="screen-bayanaat" class="screen-view">
+      <div class="section-header" style="margin-top:0;">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">video_library</span>
+          Bayanaat Library
+        </h2>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-box">
+        <span class="material-symbols-rounded search-icon">search</span>
+        <input type="text" id="bayanSearchInput" class="search-input" placeholder="Bayan title, Maulana ka naam, ya topic dhoondein...">
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs" id="bayanCategoryTabs">
+        <button class="chip-tab active" data-cat="All">All</button>
+        <button class="chip-tab" data-cat="Jumma Khutba">Jumma Khutba</button>
+        <button class="chip-tab" data-cat="Khaas Bayan">Khaas Bayan</button>
+        <button class="chip-tab" data-cat="Ijtima">Ijtima</button>
+        <button class="chip-tab" data-cat="Dars">Dars</button>
+        <button class="chip-tab" data-cat="Shorts">Shorts</button>
+      </div>
+
+      <!-- Bayanaat Cards Grid -->
+      <div class="bayan-grid" id="allBayanaatContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </main>
+
+    <!-- 3. QUIZ-E-DEEN SCREEN -->
+    <main id="screen-quiz" class="screen-view">
+      <div class="quiz-header-card">
+        <div>
+          <h2 class="section-title" style="margin:0;">
+            <span class="material-symbols-rounded section-icon">psychology</span>
+            Quiz-e-Deen
+          </h2>
+          <span style="font-size:0.78rem; color:var(--text-muted);">Ilm-e-Deen mein izafa karein</span>
+        </div>
+        <div class="quiz-stats-badge">
+          <span class="material-symbols-rounded" style="font-size:18px;">local_fire_department</span>
+          <span>Streak: <b id="userStreakVal">3</b></span>
+        </div>
+      </div>
+
+      <!-- Quiz Card Area -->
+      <div class="quiz-card" id="quizActiveArea">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width: 25%;"></div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="question-counter" id="quizCounterText">Sawal 1 / 8</span>
+          <span class="hijri-badge" id="quizCategoryBadge" style="font-size:0.7rem; padding:2px 8px;">Quran</span>
+        </div>
+
+        <h3 class="quiz-question-text" id="quizQuestionText">Quran Shareef mein kul kitni Suratein hain?</h3>
+
+        <div class="quiz-options-list" id="quizOptionsList">
+          <!-- Dynamic Options Injected via JS -->
+        </div>
+
+        <!-- Instant Result Feedback with Islamic Reference -->
+        <div class="quiz-feedback-card" id="quizFeedbackBox">
+          <div class="quiz-result-title" id="quizFeedbackTitle">
+            <span class="material-symbols-rounded" style="color:var(--success);">check_circle</span>
+            <span>Sahi Jawab!</span>
+          </div>
+          <p class="quiz-explanation" id="quizFeedbackExplanation">Quran Majeed mein kul 114 Suratein hain, jin mein 86 Makki aur 28 Madani Suratein hain.</p>
+          <div class="quiz-ref-box" id="quizFeedbackReference">Reference: Al-Itqan fi Ulum al-Quran</div>
+          <button class="btn-primary mt-4" id="btnNextQuiz" onclick="loadNextQuestion()">Agla Sawal &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Leaderboard & Score Dashboard -->
+      <div class="section-header mt-4">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">military_tech</span>
+          Leaderboard (Talib-e-Ilm)
+        </h2>
+      </div>
+      <div class="admin-card">
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-light); font-size:0.85rem;">
+          <span>🥇 1. Hafiz Abdullah</span>
+          <span style="font-weight:800; color:var(--gold);">980 Pts</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-light); font-size:0.85rem;">
+          <span>🥈 2. Mohammad Zaid</span>
+          <span style="font-weight:800; color:var(--gold);">850 Pts</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:0.85rem;">
+          <span>🥉 3. Aapka Score (You)</span>
+          <span style="font-weight:800; color:var(--primary);" id="leaderboardUserScore">240 Pts</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- 4. DEENI TALEEM SCREEN -->
+    <main id="screen-taleem" class="screen-view">
+      <div class="section-header" style="margin-top:0;">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">school</span>
+          Deeni Taleem &amp; Tarbiyah
+        </h2>
+      </div>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:16px;">
+        Noorani Qaida, Namaz, Kalime, Masnoon Duas aur Mustanad Ahadith ke ba-zabta asbaaq.
+      </p>
+
+      <div class="taleem-grid" id="taleemCategoriesContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </main>
+
+    <!-- 5. PROFILE & SETTINGS SCREEN -->
+    <main id="screen-profile" class="screen-view">
+      <div class="admin-card text-center" style="padding:24px 16px;">
+        <div class="logo-placeholder" style="width:68px; height:68px; margin:0 auto 12px; border-radius:50%;">
+          <span class="material-symbols-rounded" style="font-size:36px; color:var(--gold-light);">person</span>
+        </div>
+        <h2 style="font-size:1.15rem; font-weight:800;" id="profileUserName">Khadim-e-Deen</h2>
+        <span style="font-size:0.78rem; color:var(--gold-dark); font-weight:700;">Talib-e-Ilm • HUFFAZ ETAWAH</span>
+        
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-top:18px; padding-top:16px; border-top:1px solid var(--border-light);">
+          <div>
+            <div style="font-size:1.15rem; font-weight:800; color:var(--primary);" id="statQuizScore">240</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">Quiz Pts</div>
+          </div>
+          <div>
+            <div style="font-size:1.15rem; font-weight:800; color:var(--gold);" id="statStreak">3</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">Din Streak</div>
+          </div>
+          <div>
+            <div style="font-size:1.15rem; font-weight:800; color:var(--emerald);" id="statCompletedLessons">5</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">Asbaaq</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookmarks Section -->
+      <section class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">bookmark</span>
+          Mehfooz Bayanaat (Bookmarks)
+        </h2>
+      </section>
+      <div id="bookmarkedBayanaatList">
+        <p style="font-size:0.8rem; color:var(--text-muted); padding:10px 0;">Aapne abhi koi bayan bookmark nahi kiya hai.</p>
+      </div>
+
+      <!-- Settings Menu -->
+      <section class="section-header">
+        <h2 class="section-title">
+          <span class="material-symbols-rounded section-icon">settings</span>
+          App Settings
+        </h2>
+      </section>
+      <div class="admin-card">
+        <div class="prayer-row" onclick="openModal('modalNotifications')">
+          <div class="prayer-name-col">
+            <span class="material-symbols-rounded">notifications_active</span>
+            <span>Notification Preferences</span>
+          </div>
+          <span class="material-symbols-rounded" style="color:var(--text-muted);">chevron_right</span>
+        </div>
+        <div class="prayer-row" onclick="openModal('modalNamaz')">
+          <div class="prayer-name-col">
+            <span class="material-symbols-rounded">location_city</span>
+            <span>Prayer Location &amp; Fiqh (Hanafi)</span>
+          </div>
+          <span class="material-symbols-rounded" style="color:var(--text-muted);">chevron_right</span>
+        </div>
+        <div class="prayer-row" onclick="openModal('modalAbout')">
+          <div class="prayer-name-col">
+            <span class="material-symbols-rounded">info</span>
+            <span>About HUFFAZ ETAWAH</span>
+          </div>
+          <span class="material-symbols-rounded" style="color:var(--text-muted);">chevron_right</span>
+        </div>
+        <div class="prayer-row" onclick="openModal('modalAdmin')">
+          <div class="prayer-name-col">
+            <span class="material-symbols-rounded">admin_panel_settings</span>
+            <span style="color:var(--gold-dark); font-weight:800;">Admin Management Portal</span>
+          </div>
+          <span class="material-symbols-rounded" style="color:var(--gold-dark);">lock_open</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- BOTTOM APP NAVIGATION BAR -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-target="home" onclick="switchNav('home')">
+        <span class="material-symbols-rounded">home</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" data-target="bayanaat" onclick="switchNav('bayanaat')">
+        <span class="material-symbols-rounded">play_circle</span>
+        <span>Bayanaat</span>
+      </button>
+      <button class="nav-item" data-target="quiz" onclick="switchNav('quiz')">
+        <span class="material-symbols-rounded">quiz</span>
+        <span>Quiz</span>
+      </button>
+      <button class="nav-item" data-target="taleem" onclick="switchNav('taleem')">
+        <span class="material-symbols-rounded">auto_stories</span>
+        <span>Taleem</span>
+      </button>
+      <button class="nav-item" data-target="profile" onclick="switchNav('profile')">
+        <span class="material-symbols-rounded">person</span>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+  </div> <!-- /.app-container -->
+
+
+  <!-- =========================================================================
+       MODALS & OVERLAYS
+       ========================================================================= -->
+
+  <!-- 1. Video Player Modal (YouTube Embed + Watch on YouTube) -->
+  <div class="modal-overlay" id="modalVideoPlayer">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title" id="videoModalTitle">Bayan Title</span>
+        <button class="icon-btn" onclick="closeModal('modalVideoPlayer')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="video-responsive" id="videoEmbedContainer">
+        <!-- iframe dynamically injected -->
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <span style="font-size:0.82rem; font-weight:700; color:var(--gold-dark);" id="videoModalScholar">Scholar Name</span>
+        <a id="btnWatchOnYouTube" href="#" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:0.78rem;">
+          <span class="material-symbols-rounded" style="font-size:16px;">open_in_new</span> Watch on YouTube
+        </a>
+      </div>
+      <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.4;" id="videoModalDesc">Description</p>
+    </div>
+  </div>
+
+  <!-- 2. Namaz Ke Auqaat Modal -->
+  <div class="modal-overlay" id="modalNamaz">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Namaz ke Auqaat</span>
+        <button class="icon-btn" onclick="closeModal('modalNamaz')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Location / Shehar Chunein:</label>
+        <select id="selectCityLocation" class="form-control" onchange="changeCityLocation(this.value)">
+          <!-- Options populated via JS -->
+        </select>
+      </div>
+
+      <table class="prayer-table" id="fullPrayerTable">
+        <!-- Prayer Rows injected via JS -->
+      </table>
+
+      <p style="font-size:0.72rem; color:var(--text-muted); margin-top:14px; text-align:center;">
+        * Auqaat Hanafi Fiqh aur University of Islamic Sciences, Karachi calculation method ke mutabiq hain.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. Qibla Finder Modal -->
+  <div class="modal-overlay" id="modalQibla">
+    <div class="modal-card text-center">
+      <div class="modal-header">
+        <span class="modal-title">Qibla Direction Finder</span>
+        <button class="icon-btn" onclick="closeModal('modalQibla')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="compass-wrapper">
+        <div class="compass-dial" id="compassDial">
+          <div class="compass-needle">
+            <div class="needle-north"></div>
+            <div class="needle-south"></div>
+          </div>
+          <div class="kaaba-indicator">🕋 Qibla</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:var(--primary);" id="qiblaDegreeText">268° West</h3>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px;">
+        Etawah, UP se Kaaba Shareef (Makkah) ka rukh taqreeban 268° (Maghrib ki janib) hai.
+      </p>
+      <div class="admin-notice mt-4" style="text-align:left;">
+        <b>Tawajjoh:</b> Digital compass ki accuracy device ke magnetometer sensor aur calibration par munhasir hai. Device ko 8 ki shakl mein hilayein.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Islamic Calendar Modal -->
+  <div class="modal-overlay" id="modalCalendar">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Islami Calendar &amp; Tareekhein</span>
+        <button class="icon-btn" onclick="closeModal('modalCalendar')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="hijri-badge w-100" style="justify-content:center; padding:10px; font-size:1rem; margin-bottom:14px;">
+        Hijri Saal 1448 AH
+      </div>
+      <div id="islamicEventsList">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Taleem Lesson Reader Modal -->
+  <div class="modal-overlay" id="modalLessonReader">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title" id="lessonModalTitle">Sabaq</span>
+        <button class="icon-btn" onclick="closeModal('modalLessonReader')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div style="font-size:0.82rem; color:var(--gold-dark); font-weight:700; margin-bottom:8px;" id="lessonModalCategory">Category</div>
+      <div style="font-family:var(--font-sans); white-space:pre-line; line-height:1.7; font-size:0.95rem;" id="lessonModalContent">Content</div>
+      <div class="admin-notice mt-4" id="lessonModalRules">Rules</div>
+      <button class="btn-primary mt-4" id="btnMarkLessonCompleted" onclick="markLessonComplete()">
+        <span class="material-symbols-rounded">check_circle</span> Sabaq Mukammal Mark Karein
+      </button>
+    </div>
+  </div>
+
+  <!-- 6. Notifications Preferences Modal -->
+  <div class="modal-overlay" id="modalNotifications">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Notification Preferences</span>
+        <button class="icon-btn" onclick="closeModal('modalNotifications')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="admin-notice">
+        Browser notifications ko enable karein taake Namaz ke auqaat aur naye Bayanaat ka waqt par paigham mil sake.
+      </div>
+      <div class="form-group">
+        <label class="prayer-row">
+          <span>5 Waqt Namaz Reminders</span>
+          <input type="checkbox" id="notifNamaz" checked>
+        </label>
+        <label class="prayer-row">
+          <span>Aaj ki Ayat &amp; Hadith</span>
+          <input type="checkbox" id="notifWisdom" checked>
+        </label>
+        <label class="prayer-row">
+          <span>Naya Bayan Upload Alert</span>
+          <input type="checkbox" id="notifBayan" checked>
+        </label>
+        <label class="prayer-row">
+          <span>Daily Quiz Reminder</span>
+          <input type="checkbox" id="notifQuiz" checked>
+        </label>
+      </div>
+      <button class="btn-primary" onclick="requestNotificationPermission()">
+        <span class="material-symbols-rounded">notifications_active</span> Save &amp; Test Notification
+      </button>
+    </div>
+  </div>
+
+  <!-- 7. About HUFFAZ ETAWAH Modal -->
+  <div class="modal-overlay" id="modalAbout">
+    <div class="modal-card text-center">
+      <div class="modal-header">
+        <span class="modal-title">About HUFFAZ ETAWAH</span>
+        <button class="icon-btn" onclick="closeModal('modalAbout')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="logo-placeholder" style="width:72px; height:72px; margin:0 auto 12px; border-radius:var(--radius-lg);">
+        <svg viewBox="0 0 512 512">
+          <path d="M 256 120 C 230 150, 190 190, 190 260 L 322 260 C 322 190, 282 150, 256 120 Z" />
+        </svg>
+      </div>
+      <h3 style="font-size:1.2rem; font-weight:800; color:var(--primary);">HUFFAZ ETAWAH</h3>
+      <span style="font-size:0.82rem; color:var(--gold-dark); font-weight:700;">Deen &amp; Bayanaat</span>
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin:14px 0; line-height:1.5;">
+        HUFFAZ ETAWAH ek deeni o fikri platform hai jiska maqsad mustanad Quran o Sunnah ki roshni mein Bayanaat, Jumma Khutbas, Ilm-e-Deen, aur Bachon ki Islami Taleem o Tarbiyah ko aam karna hai.
+      </p>
+      <div class="admin-notice">
+        <b>Tagline:</b> Ilm • Ibadat • Tarbiyah<br>
+        <b>Version:</b> 2.5.0 (Offline PWA)
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ADMIN MANAGEMENT PORTAL (Comprehensive CMS) -->
+  <div class="modal-overlay" id="modalAdmin">
+    <div class="modal-card" style="max-height:88vh; overflow-y:auto;">
+      <div class="modal-header">
+        <div>
+          <span class="modal-title">Admin Management Portal</span>
+          <div style="font-size:0.75rem; color:var(--text-muted);">HUFFAZ ETAWAH CMS • Free-First Architecture</div>
+        </div>
+        <button class="icon-btn" onclick="closeModal('modalAdmin')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <!-- Admin Navigation Tabs -->
+      <div class="admin-nav-tabs" id="adminNavTabs">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('dashboard')">
+          <span class="material-symbols-rounded" style="font-size:16px;">dashboard</span> Dashboard
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('analytics')">
+          <span class="material-symbols-rounded" style="font-size:16px;">analytics</span> Analytics
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('bayanaat')">
+          <span class="material-symbols-rounded" style="font-size:16px;">video_library</span> Bayanaat
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('quiz')">
+          <span class="material-symbols-rounded" style="font-size:16px;">psychology</span> Quiz-e-Deen
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('media')">
+          <span class="material-symbols-rounded" style="font-size:16px;">perm_media</span> Media Manager
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('gallery')">
+          <span class="material-symbols-rounded" style="font-size:16px;">collections</span> Gallery
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('daily')">
+          <span class="material-symbols-rounded" style="font-size:16px;">menu_book</span> Daily Content
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('branding')">
+          <span class="material-symbols-rounded" style="font-size:16px;">palette</span> Branding
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('security')">
+          <span class="material-symbols-rounded" style="font-size:16px;">security</span> Security &amp; Users
+        </button>
+      </div>
+
+      <!-- TAB 1: DASHBOARD -->
+      <div class="admin-tab-pane active" id="adminTab-dashboard">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h4 style="font-size:0.95rem; font-weight:800; margin:0;">Markazi Dashboard</h4>
+          <div class="presence-pill" id="adminPresencePill">
+            <span class="presence-dot"></span>
+            <span id="adminPresenceText">Analytics not connected</span>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:16px;">
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" id="statDashUsers">12</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Total Users</div>
+          </div>
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" id="statDashActive">3</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Active Today</div>
+          </div>
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" style="color:var(--gold);" id="statDashBayanaat">7</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Total Bayanaat</div>
+          </div>
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" style="color:var(--emerald);" id="statDashViews">1.2K</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Bayan Views</div>
+          </div>
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" id="statDashQuizzes">8</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Total Quizzes</div>
+          </div>
+          <div class="analytics-stat-card text-center">
+            <div class="analytics-num" style="color:var(--gold);" id="statDashLessons">38</div>
+            <div style="font-size:0.68rem; color:var(--text-muted);">Lessons</div>
+          </div>
+        </div>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin-bottom:8px;">Quick Actions (For Phone/Mobile Admin)</h5>
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; margin-bottom:14px;">
+          <button class="btn-outline" onclick="switchAdminTab('bayanaat')">
+            <span class="material-symbols-rounded">add_circle</span> + Naya Bayan
+          </button>
+          <button class="btn-outline" onclick="switchAdminTab('quiz')">
+            <span class="material-symbols-rounded">add_task</span> + Naya Quiz
+          </button>
+          <button class="btn-outline" onclick="switchAdminTab('gallery')">
+            <span class="material-symbols-rounded">add_photo_alternate</span> + Naya Album
+          </button>
+          <button class="btn-outline" onclick="switchAdminTab('daily')">
+            <span class="material-symbols-rounded">edit_note</span> Edit Daily Content
+          </button>
+          <button class="btn-outline" onclick="switchAdminTab('branding')">
+            <span class="material-symbols-rounded">brush</span> Change Logo / Name
+          </button>
+          <button class="btn-outline" onclick="switchAdminTab('media')">
+            <span class="material-symbols-rounded">upload_file</span> Media Manager
+          </button>
+        </div>
+
+        <div class="admin-notice">
+          <b>Safe Free-First Mode:</b> Local changes are preserved instantly. Admin access works on any phone, tablet, or desktop browser.
+        </div>
+      </div>
+
+      <!-- TAB 2: ANALYTICS -->
+      <div class="admin-tab-pane" id="adminTab-analytics">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h4 style="font-size:0.95rem; font-weight:800; margin:0;">Usage &amp; Engagement Analytics</h4>
+          <div style="display:flex; gap:4px;">
+            <button class="chip-tab active" id="btnFilterToday" onclick="filterAnalytics('today')">Today</button>
+            <button class="chip-tab" id="btnFilter7d" onclick="filterAnalytics('7days')">7 Days</button>
+            <button class="chip-tab" id="btnFilter30d" onclick="filterAnalytics('30days')">30 Days</button>
+            <button class="chip-tab" id="btnFilterAll" onclick="filterAnalytics('all')">All Time</button>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; margin-bottom:14px;">
+          <div class="analytics-stat-card">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Active in Period</span>
+            <div class="analytics-num" id="anActiveUsers">3</div>
+          </div>
+          <div class="analytics-stat-card">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Total App Opens</span>
+            <div class="analytics-num" id="anAppOpens">18</div>
+          </div>
+          <div class="analytics-stat-card">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Total Bayan Plays</span>
+            <div class="analytics-num" style="color:var(--emerald);" id="anBayanPlays">14</div>
+          </div>
+          <div class="analytics-stat-card">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Quiz Attempts</span>
+            <div class="analytics-num" style="color:var(--gold);" id="anQuizAttempts">22</div>
+          </div>
+        </div>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin-bottom:8px;">Most Popular Bayanaat</h5>
+        <div id="analyticsPopularBayanaatList" style="display:flex; flex-direction:column; gap:6px; margin-bottom:16px;">
+          <!-- Injected via JS -->
+        </div>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin-bottom:8px;">Most Used Features</h5>
+        <div id="analyticsFeatureUsageList" style="display:flex; flex-direction:column; gap:6px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 3: BAYANAAT CMS -->
+      <div class="admin-tab-pane" id="adminTab-bayanaat">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">+ Naya Bayan Shaamil Karein</h4>
+        <form id="formAddBayan" onsubmit="handleAdminAddBayan(event)">
+          <div class="form-group">
+            <label class="form-label">Bayan Title:</label>
+            <input type="text" id="adminBayanTitle" class="form-control" required placeholder="Bayan ka unwan...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Scholar / Maulana:</label>
+            <input type="text" id="adminBayanScholar" class="form-control" required value="Maulana Jarjees Ansari Hafizahullah">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category:</label>
+            <select id="adminBayanCat" class="form-control">
+              <option value="Jumma Khutba">Jumma Khutba</option>
+              <option value="Khaas Bayan" selected>Khaas Bayan</option>
+              <option value="Ijtima">Ijtima</option>
+              <option value="Dars">Dars</option>
+              <option value="Shorts">Shorts</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">YouTube URL ya Video ID:</label>
+            <input type="text" id="adminBayanUrl" class="form-control" required placeholder="https://www.youtube.com/watch?v=... ya shorts URL">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Duration (e.g. 45:10):</label>
+            <input type="text" id="adminBayanDuration" class="form-control" value="45:00">
+          </div>
+          <button type="submit" class="btn-primary mb-4">Bayan Publish Karein</button>
+        </form>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin:16px 0 8px;">Maujooda Bayanaat Library</h5>
+        <div id="adminBayanaatList" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 4: QUIZ CMS -->
+      <div class="admin-tab-pane" id="adminTab-quiz">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">+ Naya Deeni Quiz Sawaal</h4>
+        <form id="formAddQuiz" onsubmit="handleAdminAddQuiz(event)">
+          <div class="form-group">
+            <label class="form-label">Category:</label>
+            <select id="adminQuizCat" class="form-control">
+              <option value="Quran">Quran</option>
+              <option value="Seerah">Seerah</option>
+              <option value="Namaz">Namaz</option>
+              <option value="Ahadith">Ahadith</option>
+              <option value="Prophets">Prophets</option>
+              <option value="Deeniyat">Deeniyat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sawal (Question):</label>
+            <input type="text" id="adminQuizQ" class="form-control" required placeholder="Question text...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option A:</label>
+            <input type="text" id="adminQuizA" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option B:</label>
+            <input type="text" id="adminQuizB" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option C:</label>
+            <input type="text" id="adminQuizC" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Option D:</label>
+            <input type="text" id="adminQuizD" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sahi Jawab (Correct Option Index):</label>
+            <select id="adminQuizCorrect" class="form-control">
+              <option value="0">Option A</option>
+              <option value="1">Option B</option>
+              <option value="2">Option C</option>
+              <option value="3">Option D</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Wazahat (Explanation):</label>
+            <input type="text" id="adminQuizExp" class="form-control" required placeholder="Short explanation...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Islamic Reference (MANDATORY):</label>
+            <input type="text" id="adminQuizRef" class="form-control" required placeholder="e.g. Sahih Al-Bukhari 5027 / Surah Baqarah 2:255">
+          </div>
+          <button type="submit" class="btn-gold w-100">Quiz Question Publish Karein</button>
+        </form>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin:16px 0 8px;">Maujooda Quiz Questions</h5>
+        <div id="adminQuizzesList" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 5: MEDIA MANAGER -->
+      <div class="admin-tab-pane" id="adminTab-media">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h4 style="font-size:0.95rem; font-weight:800; margin:0;">Media Manager</h4>
+          <select id="adminMediaCategoryFilter" class="form-control" style="width:auto; padding:4px 8px; font-size:0.75rem;" onchange="renderAdminMedia()">
+            <option value="all">Tamam Media</option>
+            <option value="logo">Logo</option>
+            <option value="home_banner">Home Banner</option>
+            <option value="bayan_thumbnails">Bayan Thumbnails</option>
+            <option value="program_photos">Program Photos</option>
+            <option value="kids_thumbnails">Kids Thumbnails</option>
+            <option value="gallery_images">Gallery Images</option>
+          </select>
+        </div>
+
+        <form id="formAddMedia" onsubmit="handleAdminAddMedia(event)" class="admin-card" style="padding:12px; margin-bottom:14px;">
+          <span style="font-size:0.8rem; font-weight:700;">+ Media Upload / Add Link</span>
+          <div class="form-group mt-2">
+            <input type="text" id="adminMediaName" class="form-control" placeholder="Media Title (e.g. Jalsa Photo)..." required>
+          </div>
+          <div class="form-group">
+            <select id="adminMediaCategorySelect" class="form-control">
+              <option value="logo">Official Logo</option>
+              <option value="home_banner">Home Banner</option>
+              <option value="bayan_thumbnails">Bayan Thumbnail</option>
+              <option value="program_photos" selected>Program Photo</option>
+              <option value="kids_thumbnails">Kids Thumbnail</option>
+              <option value="gallery_images">Gallery Image</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="url" id="adminMediaUrl" class="form-control" placeholder="Image URL (https://...)" required>
+          </div>
+          <button type="submit" class="btn-primary" style="padding:8px 14px; font-size:0.82rem;">Save Media Item</button>
+        </form>
+
+        <div class="media-grid" id="adminMediaGrid">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 6: PHOTO GALLERY CMS -->
+      <div class="admin-tab-pane" id="adminTab-gallery">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">+ Naya Photo Album Shaamil Karein</h4>
+        <form id="formAddAlbum" onsubmit="handleAdminAddAlbum(event)" class="admin-card" style="padding:12px; margin-bottom:14px;">
+          <div class="form-group">
+            <label class="form-label">Album Name:</label>
+            <input type="text" id="adminAlbumName" class="form-control" required placeholder="e.g. Salana Jalsa Dastarbandi 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Program Name:</label>
+            <input type="text" id="adminAlbumProgram" class="form-control" required placeholder="e.g. Annual Convocation">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description / Tafseel:</label>
+            <input type="text" id="adminAlbumDesc" class="form-control" placeholder="Brief details about the program...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cover Photo URL:</label>
+            <input type="url" id="adminAlbumCover" class="form-control" placeholder="https://..." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Photos URLs (Comma separated):</label>
+            <textarea id="adminAlbumPhotos" class="form-control" rows="2" placeholder="https://image1.jpg, https://image2.jpg"></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-100">Album Create Karein</button>
+        </form>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin:16px 0 8px;">Maujooda Albums</h5>
+        <div id="adminAlbumsList" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- TAB 7: DAILY CONTENT CMS -->
+      <div class="admin-tab-pane" id="adminTab-daily">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">Daily Islamic Content Management</h4>
+        
+        <!-- Ayat Form -->
+        <form onsubmit="handleAdminSaveDailyContent(event, 'ayat')" class="admin-card">
+          <h5 style="font-size:0.85rem; font-weight:800; color:var(--primary); margin-bottom:8px;">📖 Aaj ki Ayat</h5>
+          <div class="form-group">
+            <label class="form-label">Arabic Text:</label>
+            <input type="text" id="adminDailyAyatArabic" class="form-control" style="font-family:var(--font-arabic);" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Urdu Tarjuma:</label>
+            <input type="text" id="adminDailyAyatUrdu" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reference:</label>
+            <input type="text" id="adminDailyAyatRef" class="form-control" required placeholder="Surah Name &amp; Verse">
+          </div>
+          <button type="submit" class="btn-primary" style="padding:6px 12px; font-size:0.78rem;">Update Ayat</button>
+        </form>
+
+        <!-- Hadith Form -->
+        <form onsubmit="handleAdminSaveDailyContent(event, 'hadith')" class="admin-card">
+          <h5 style="font-size:0.85rem; font-weight:800; color:var(--primary); margin-bottom:8px;">📜 Aaj ki Hadith</h5>
+          <div class="form-group">
+            <label class="form-label">Arabic Text:</label>
+            <input type="text" id="adminDailyHadithArabic" class="form-control" style="font-family:var(--font-arabic);" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Urdu Tarjuma:</label>
+            <input type="text" id="adminDailyHadithUrdu" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reference:</label>
+            <input type="text" id="adminDailyHadithRef" class="form-control" required placeholder="Sahih Bukhari / Muslim Hadith No.">
+          </div>
+          <button type="submit" class="btn-primary" style="padding:6px 12px; font-size:0.78rem;">Update Hadith</button>
+        </form>
+
+        <!-- Dua Form -->
+        <form onsubmit="handleAdminSaveDailyContent(event, 'dua')" class="admin-card">
+          <h5 style="font-size:0.85rem; font-weight:800; color:var(--primary); margin-bottom:8px;">🤲 Aaj ki Dua</h5>
+          <div class="form-group">
+            <label class="form-label">Arabic Text:</label>
+            <input type="text" id="adminDailyDuaArabic" class="form-control" style="font-family:var(--font-arabic);" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Urdu Tarjuma:</label>
+            <input type="text" id="adminDailyDuaUrdu" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reference:</label>
+            <input type="text" id="adminDailyDuaRef" class="form-control" required placeholder="Masnoon Reference">
+          </div>
+          <button type="submit" class="btn-primary" style="padding:6px 12px; font-size:0.78rem;">Update Dua</button>
+        </form>
+      </div>
+
+      <!-- TAB 8: BRANDING CMS -->
+      <div class="admin-tab-pane" id="adminTab-branding">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">App Branding &amp; Identity</h4>
+        <form id="formAdminBranding" onsubmit="handleAdminSaveBranding(event)" class="admin-card">
+          <div class="form-group">
+            <label class="form-label">App Name:</label>
+            <input type="text" id="adminBrandName" class="form-control" value="HUFFAZ ETAWAH" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle:</label>
+            <input type="text" id="adminBrandSubtitle" class="form-control" value="Deen &amp; Bayanaat" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tagline:</label>
+            <input type="text" id="adminBrandTagline" class="form-control" value="Ilm • Ibadat • Tarbiyah" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Logo Image URL (Optional):</label>
+            <input type="url" id="adminBrandLogo" class="form-control" placeholder="https://... (Leave empty for default Islamic Crest SVG)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Home Banner URL (Optional):</label>
+            <input type="url" id="adminBrandBanner" class="form-control" placeholder="https://...">
+          </div>
+          <button type="submit" class="btn-gold w-100">Save &amp; Apply Branding Everywhere</button>
+        </form>
+      </div>
+
+      <!-- TAB 9: SECURITY & USERS -->
+      <div class="admin-tab-pane" id="adminTab-security">
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:8px;">Users &amp; Role Management</h4>
+        <div class="admin-notice">
+          <b>DEVELOPMENT / LOCAL DEMO ONLY:</b> Client-side roles are configured for instant testing. Production deployment supports standard Firebase Authentication.
+        </div>
+        <div id="adminUsersList" style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+          <!-- Injected via JS -->
+        </div>
+
+        <h5 style="font-size:0.85rem; font-weight:800; margin-bottom:8px;">Firebase Cloud Architecture</h5>
+        <div class="admin-card" style="font-size:0.8rem; line-height:1.5;">
+          <div style="font-weight:700; color:var(--primary); margin-bottom:4px;">Free-Tier Cloud Configuration</div>
+          Firebase integration is fully optional and modular. The application works completely without paid APIs or mandatory billing.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 9. PHOTO GALLERY LIGHTBOX & VIEWER MODAL -->
+  <div class="modal-overlay" id="modalGallery">
+    <div class="modal-card" style="max-height:90vh; overflow-y:auto;">
+      <div class="modal-header">
+        <div>
+          <span class="modal-title">Photo Gallery &amp; Programs</span>
+          <div style="font-size:0.75rem; color:var(--text-muted);">HUFFAZ ETAWAH Deeni Programs &amp; Jalsas</div>
+        </div>
+        <button class="icon-btn" onclick="closeModal('modalGallery')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div class="gallery-grid" id="publicGalleryGrid">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. HUFFAZ ETAWAH KIDS MODAL VIEW -->
+  <div class="modal-overlay" id="modalKids">
+    <div class="modal-card kids-modal-card">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="material-symbols-rounded" style="font-size:28px; color:var(--gold);">child_care</span>
+          <div>
+            <span class="modal-title" style="color:var(--primary);">HUFFAZ ETAWAH Kids</span>
+            <div style="font-size:0.72rem; color:var(--gold-dark); font-weight:700;">Learn • Love • Practice</div>
+          </div>
+        </div>
+        <button class="icon-btn" onclick="closeModal('modalKids')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">
+        Bachon ke liye dilchasp Islami sabaq, Sunnat aadaab, choti duaein aur interactive kahaniyan:
+      </p>
+
+      <div class="kids-category-grid">
+        <div class="kids-cat-btn" onclick="openKidsSubModule('stories')">
+          <span class="material-symbols-rounded" style="font-size:32px; color:var(--gold);">auto_stories</span>
+          <b style="font-size:0.85rem; margin-top:4px;">Islami Kahaniyan</b>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Anbiya ke qisse</span>
+        </div>
+        <div class="kids-cat-btn" onclick="openKidsSubModule('manners')">
+          <span class="material-symbols-rounded" style="font-size:32px; color:var(--emerald);">favorite</span>
+          <b style="font-size:0.85rem; margin-top:4px;">Good Manners</b>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Sunnat aadaab</span>
+        </div>
+        <div class="kids-cat-btn" onclick="openKidsSubModule('duas')">
+          <span class="material-symbols-rounded" style="font-size:32px; color:var(--primary);">pan_tool</span>
+          <b style="font-size:0.85rem; margin-top:4px;">Choti Duayein</b>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Daily Masnoon Duas</span>
+        </div>
+        <div class="kids-cat-btn" onclick="switchNav('quiz'); closeModal('modalKids');">
+          <span class="material-symbols-rounded" style="font-size:32px; color:var(--gold);">psychology</span>
+          <b style="font-size:0.85rem; margin-top:4px;">Kids Quiz</b>
+          <span style="font-size:0.68rem; color:var(--text-muted);">Play &amp; Learn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. MODULAR AUTHENTICATION (Login / Signup) MODAL -->
+  <div class="modal-overlay" id="modalAuth">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title" id="authModalTitle">Talib-e-Ilm Login</span>
+        <button class="icon-btn" onclick="closeModal('modalAuth')">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <!-- Google One-Click Login -->
+      <button class="btn-outline w-100" style="display:flex; justify-content:center; gap:10px; margin-bottom:14px;" onclick="handleGoogleLogin()">
+        <span class="material-symbols-rounded" style="color:var(--primary);">account_circle</span>
+        <span>Continue with Google / Gmail</span>
+      </button>
+
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px; color:var(--text-muted); font-size:0.75rem;">
+        <hr style="flex:1; border:0; border-top:1px solid var(--border);">
+        <span>ya Email ke zariye</span>
+        <hr style="flex:1; border:0; border-top:1px solid var(--border);">
+      </div>
+
+      <!-- Email Login Form -->
+      <form id="formAuthLogin" onsubmit="handleEmailLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Email Address:</label>
+          <input type="email" id="authLoginEmail" class="form-control" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password:</label>
+          <input type="password" id="authLoginPassword" class="form-control" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn-primary mb-2">Login Karein</button>
+      </form>
+
+      <!-- Phone OTP Trigger with Clear Notice -->
+      <button class="btn-outline w-100 mt-2" style="font-size:0.78rem;" onclick="handlePhoneOtpClick()">
+        <span class="material-symbols-rounded" style="font-size:16px;">smartphone</span> Login with Phone OTP
+      </button>
+
+      <div class="text-center mt-4" style="font-size:0.78rem;">
+        <span id="authTogglePrompt">Naya account banayein?</span>
+        <a style="color:var(--gold-dark); font-weight:800; cursor:pointer;" onclick="toggleAuthMode()" id="authToggleBtn">Sign Up Karein</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Data & Modular Services -->
+  <script src="./data.js"></script>
+  <script src="./src/services/firebaseConfig.js"></script>
+  <script src="./src/services/authService.js"></script>
+  <script src="./src/services/analyticsService.js"></script>
+  <script src="./src/services/presenceService.js"></script>
+  <script src="./src/services/mediaService.js"></script>
+  <script src="./src/services/bayanService.js"></script>
+  <script src="./src/services/quizService.js"></script>
+  <script src="./src/services/taleemService.js"></script>
+  <script src="./src/services/settingsService.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

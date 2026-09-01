@@ -1,0 +1,62 @@
+{
+  "name": "HUFFAZ ETAWAH - Deen & Bayanaat",
+  "short_name": "HUFFAZ ETAWAH",
+  "description": "Islamic media and educational platform for authentic Bayanaat, Jumma Khutbas, Deeni Taleem, Quranic Quizzes and Children learning.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#062319",
+  "theme_color": "#0A3828",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "books"],
+  "shortcuts": [
+    {
+      "name": "Namaz Times & Qibla",
+      "short_name": "Namaz",
+      "description": "View prayer times and Qibla compass",
+      "url": "./index.html#home",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Bayanaat & Khutba",
+      "short_name": "Bayanaat",
+      "description": "Watch Islamic lectures and Khutba",
+      "url": "./index.html#bayanaat",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Quiz-e-Deen",
+      "short_name": "Quiz",
+      "description": "Play Islamic quiz and earn points",
+      "url": "./index.html#quiz",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Deeni Taleem",
+      "short_name": "Taleem",
+      "description": "Learn Quran, Tajweed and Masnoon Duas",
+      "url": "./index.html#taleem",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any" }]
+    }
+  ]
+}
